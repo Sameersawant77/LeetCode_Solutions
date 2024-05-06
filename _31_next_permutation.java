@@ -21,7 +21,7 @@
 //Input: nums = [3,2,1]
 //Output: [1,2,3]
 
-public class next_permutation_31 {
+public class _31_next_permutation {
     public void nextPermutation(int[] nums) {
         int n = nums.length, index = -1;
         for(int i = n - 2; i >= 0; i--) {

@@ -4,7 +4,7 @@
 //
 //You must solve this problem without using the library's sort function.
 
-public class Sort_Colors_75 {
+public class _75_Sort_Colors {
     public void sortColors(int[] nums) {
         int l = 0, r = nums.length - 1, i = 0;
         while(i<=r){

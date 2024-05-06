@@ -2,7 +2,7 @@
 //
 //You must do it in place.
 
-public class SetMatrixZeros_73 {
+public class _73_SetMatrixZeros {
     public void setZeroes(int[][] matrix) {
         int m=matrix.length, n=matrix[0].length;
         boolean isRow0=false, isCol0=false;

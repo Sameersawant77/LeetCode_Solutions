@@ -2,7 +2,7 @@
 //subarray
 // with the largest sum, and return its sum.
 
-public class kadanes_algorithm_53 {
+public class _53_kadanes_algorithm {
     public int maxSubArray(int[] nums) {
         int max = Integer.MIN_VALUE, sum = 0;
         for(int i=0;i<nums.length;i++){

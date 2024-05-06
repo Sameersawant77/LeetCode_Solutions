@@ -4,7 +4,7 @@
 //
 //Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
-public class Stock_Buy_and_Sell {
+public class _121_Stock_Buy_and_Sell {
     public int maxProfit(int[] prices) {
         int min = Integer.MAX_VALUE;
         int maxProfit = 0;

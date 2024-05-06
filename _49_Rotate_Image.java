@@ -2,7 +2,7 @@
 //
 //You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
 
-public class Rotate_Image_49 {
+public class _49_Rotate_Image {
     public void rotate(int[][] matrix) {
         for(int i=0;i<matrix.length;i++){
             for(int j=i+1; j<matrix.length;j++){
