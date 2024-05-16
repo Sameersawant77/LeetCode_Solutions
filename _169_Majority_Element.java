@@ -31,4 +31,4 @@ public class _169_Majority_Element {
     }
 }
 
-// the count increases as occurence, if we traverse till count gets 0 again then the current element may not be the biggest
+// the count increases as occurence, if we traverse till count gets 0 again then the current element may not be the biggest as it is not getting repeated and subtracted its occurence
