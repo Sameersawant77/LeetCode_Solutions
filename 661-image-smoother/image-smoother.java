@@ -9,15 +9,18 @@ class Solution {
         }
         return res;
     }
-    public int smoothen(int[][] img,int a, int b, int m, int n){
+    public int smoothen(int[][] img,int i, int j, int m, int n){
         int sum = 0, count = 0;
-        for(int i=-1;i<=1;i++){
-            for(int j=-1;j<=1;j++){
-                int ia = a + i;
-                int jb = b + j;
-                if(ia < 0 || ia >= m || jb < 0 || jb >= n) continue;
-                sum += img[ia][jb];
-                count++;
+
+        int top = Math.max(0, i - 1);
+        int bottom = Math.min(m, i + 2);
+        int left = Math.max(0, j - 1);
+        int right = Math.min(n, j + 2);
+
+        for (int row = top; row < bottom; row++) {
+            for (int col = left; col < right; col++) {
+                sum += img[row][col];
+                count ++;
             }
         }
         return sum/count;
