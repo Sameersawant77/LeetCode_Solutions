@@ -1,11 +1,11 @@
 class Solution {
     public boolean checkPowersOfThree(int n) {
-        while (n > 0) {
-            if (n % 3 == 2) {
-                return false;
-            }
-            n /= 3;
-        }
-        return true;
+        return backtrack(0,0,n);
+    }
+    public boolean backtrack(int i,int curSum,int n){
+        if(curSum==n) return true;
+        if(curSum>n || (int) Math.pow(3,i)>n) return false;
+        if(backtrack(i+1,curSum+ (int) Math.pow(3,i),n)) return true;
+        return backtrack(i+1,curSum,n);
     }
 }
