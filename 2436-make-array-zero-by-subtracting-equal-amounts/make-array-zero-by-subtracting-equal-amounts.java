@@ -1,9 +1,14 @@
 class Solution {
     public int minimumOperations(int[] nums) {
-        Set<Integer> set = new HashSet<>();
+        Arrays.sort(nums);
+        int sub = 0,cnt = 0;
         for(int num : nums){
-            if(num!=0) set.add(num);
+            num-=sub;
+            if(num>0){
+                sub+=num;
+                cnt++;
+            }
         }
-        return set.size();
+        return cnt;
     }
 }
