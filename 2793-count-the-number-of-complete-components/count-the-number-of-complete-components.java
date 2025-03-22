@@ -1,40 +1,45 @@
 import java.util.*;
 
 class Solution {
-    private Map<Integer, List<Integer>> graph = new HashMap<>();
 
     public int countCompleteComponents(int n, int[][] edges) {
-        for (int[] edge : edges) {
-            graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
-            graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
+        List<List<Integer>> adj = new ArrayList<>();
+        for(int i = 0; i < n; i++) {
+            adj.add(new ArrayList<>());
+        }
+        for(int[] edge:edges) {
+            int nodeA = edge[0];
+            int nodeB = edge[1];
+            adj.get(nodeA).add(nodeB);
+            adj.get(nodeB).add(nodeA);
         }
 
-        Set<Integer> visited = new HashSet<>();
+        int[] visited = new int[n];
         int count = 0;
 
         for (int i = 0; i < n; i++) {
-            if (!visited.contains(i)) {
+            if (visited[i]==0) {
                 Set<Integer> component = new HashSet<>();
-                dfs(i, component, visited);
-                if (isCompleteComponent(component)) count++;
+                dfs(i, component, visited, adj);
+                if (isCompleteComponent(component,adj)) count++;
             }
         }
         return count;
     }
 
-    private void dfs(int node, Set<Integer> component, Set<Integer> visited) {
+    private void dfs(int node, Set<Integer> component, int[] visited, List<List<Integer>> adj) {
         component.add(node);
-        visited.add(node);
-        for (int neighbor : graph.getOrDefault(node, new ArrayList<>())) {
-            if (!visited.contains(neighbor)) {
-                dfs(neighbor, component, visited);
+        visited[node]=1;
+        for (int neighbor : adj.get(node)) {
+            if (visited[neighbor]==0) {
+                dfs(neighbor, component, visited, adj);
             }
         }
     }
 
-    private boolean isCompleteComponent(Set<Integer> component) {
+    private boolean isCompleteComponent(Set<Integer> component, List<List<Integer>> adj) {
         for (int node : component) {
-            if (graph.getOrDefault(node, new ArrayList<>()).size() != component.size() - 1) {
+            if (adj.get(node).size() != component.size() - 1) {
                 return false;
             }
         }
