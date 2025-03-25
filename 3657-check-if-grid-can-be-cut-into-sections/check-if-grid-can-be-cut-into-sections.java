@@ -1,15 +1,23 @@
 class Solution {
     public boolean checkValidCuts(int n, int[][] rectangles) {
-        return check(rectangles,0) || check(rectangles,1);
-    }
-    private boolean check(int[][] rectangles, int i){
-        int res = 0;
-        Arrays.sort(rectangles,(a,b)->Integer.compare(a[i], b[i]));
-        int pre = rectangles[0][i+2];
-        for(int[] rectangle : rectangles){
-            if(pre<=rectangle[i]) res++;
-            pre = Math.max(pre,rectangle[i+2]);
+        int res = 0, N = rectangles.length;
+        Arrays.sort(rectangles,(a,b)->Integer.compare(a[0], b[0]));
+        int pre = rectangles[0][2];
+        for(int i=0;i<N;i++){
+            if(pre<=rectangles[i][0]) res++;
+            pre = Math.max(pre,rectangles[i][2]);
         }
-        return res > 1;
+        if(res > 1) return true;
+
+        res = 0;
+        Arrays.sort(rectangles,(a,b)->Integer.compare(a[1], b[1]));
+        pre = rectangles[0][3];
+        for(int i=0;i<N;i++){
+            if(pre<=rectangles[i][1]) res++;
+            pre = Math.max(pre,rectangles[i][3]);
+        }
+        if(res > 1) return true;
+
+        return false;
     }
 }
