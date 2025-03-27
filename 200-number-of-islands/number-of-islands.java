@@ -12,8 +12,9 @@ class Solution {
         return res;
     }
     private void dfs(char[][] grid, int i, int j, int n, int m){
-        if(i<0 || i>=n || j<0 || j>=m) return;
-        if(grid[i][j]=='0') return;
+        if(i<0 || i>=n || j<0 || j>=m || grid[i][j] == '0'){
+            return;
+        }
         grid[i][j] = '0';
         dfs(grid,i-1,j,n,m);
         dfs(grid,i+1,j,n,m);
